@@ -19,9 +19,6 @@ namespace Cedris.Restaurant.API
     {
         public Startup(IConfiguration configuration)
         {
-
-
-
             Configuration = configuration;
         }
 
@@ -32,7 +29,22 @@ namespace Cedris.Restaurant.API
         {
             services.AddDbContext<EfDbContext>(options =>
             {
+                
                 options.UseSqlServer(Configuration.GetConnectionString("CedrisConnectionString"));
+            });
+
+            
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll",
+                    builder =>
+                    {
+                        builder
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials();
+                    });
             });
 
 

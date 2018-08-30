@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Cedris.Restaurant.Infra.Data.Migrations
 {
     [DbContext(typeof(EfDbContext))]
-    [Migration("20180830042315_Initial")]
+    [Migration("20180830181659_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,21 +30,19 @@ namespace Cedris.Restaurant.Infra.Data.Migrations
 
                     b.Property<string>("Image");
 
-                    b.Property<Guid?>("OrderId");
-
                     b.Property<decimal>("Price");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OrderId");
-
-                    b.ToTable("Items");
+                    b.ToTable("Item");
                 });
 
             modelBuilder.Entity("Cedris.Restaurant.Domain.Entities.Order", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<decimal>("Discount");
 
                     b.Property<Guid?>("TableId");
 
@@ -53,6 +51,24 @@ namespace Cedris.Restaurant.Infra.Data.Migrations
                     b.HasIndex("TableId");
 
                     b.ToTable("Order");
+                });
+
+            modelBuilder.Entity("Cedris.Restaurant.Domain.Entities.OrderItem", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<Guid?>("ItemId");
+
+                    b.Property<Guid?>("OrderId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ItemId");
+
+                    b.HasIndex("OrderId");
+
+                    b.ToTable("OrderItem");
                 });
 
             modelBuilder.Entity("Cedris.Restaurant.Domain.Entities.Table", b =>
@@ -66,14 +82,7 @@ namespace Cedris.Restaurant.Infra.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Tables");
-                });
-
-            modelBuilder.Entity("Cedris.Restaurant.Domain.Entities.Item", b =>
-                {
-                    b.HasOne("Cedris.Restaurant.Domain.Entities.Order")
-                        .WithMany("Items")
-                        .HasForeignKey("OrderId");
+                    b.ToTable("Table");
                 });
 
             modelBuilder.Entity("Cedris.Restaurant.Domain.Entities.Order", b =>
@@ -81,6 +90,17 @@ namespace Cedris.Restaurant.Infra.Data.Migrations
                     b.HasOne("Cedris.Restaurant.Domain.Entities.Table", "Table")
                         .WithMany()
                         .HasForeignKey("TableId");
+                });
+
+            modelBuilder.Entity("Cedris.Restaurant.Domain.Entities.OrderItem", b =>
+                {
+                    b.HasOne("Cedris.Restaurant.Domain.Entities.Item", "Item")
+                        .WithMany()
+                        .HasForeignKey("ItemId");
+
+                    b.HasOne("Cedris.Restaurant.Domain.Entities.Order", "Order")
+                        .WithMany()
+                        .HasForeignKey("OrderId");
                 });
 #pragma warning restore 612, 618
         }

@@ -3,16 +3,15 @@ using System.Collections.Generic;
 
 namespace Cedris.Restaurant.Domain.Entities
 {
-    public class Order
+    public class OrderItem
     {
-        public Order()
+        public OrderItem()
         {
             Id = Guid.NewGuid();
         }
 
         public Guid Id { get; set; }
-        public Table Table { get; set; }
-        public decimal Discount { get; set; }
-        public DateTime Date { get; set; }
+        public Order Order { get; set; }
+        public Item Item { get; set; }
     }
 }

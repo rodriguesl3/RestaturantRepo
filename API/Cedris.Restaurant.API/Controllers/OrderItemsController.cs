@@ -10,20 +10,11 @@ namespace Cedris.Restaurant.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class OrdersController : ControllerBase
+    public class OrderItemsController : ControllerBase
     {
         private readonly EfDbContext _context;
-        public OrdersController(EfDbContext context)
+        public OrderItemsController(EfDbContext context)
         {
-            _context = context;
-        }
-
-
-        // GET api/values
-        [HttpGet]
-        public ActionResult<IEnumerable<Order>> Get()
-        {
-            return _context.Order;
         }
     }
 }

@@ -8,7 +8,21 @@ namespace Cedris.Restaurant.Infra.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Tables",
+                name: "Item",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    Description = table.Column<string>(nullable: true),
+                    Price = table.Column<decimal>(nullable: false),
+                    Image = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Item", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Table",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
@@ -17,7 +31,7 @@ namespace Cedris.Restaurant.Infra.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Tables", x => x.Id);
+                    table.PrimaryKey("PK_Table", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -25,34 +39,39 @@ namespace Cedris.Restaurant.Infra.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    TableId = table.Column<Guid>(nullable: true)
+                    TableId = table.Column<Guid>(nullable: true),
+                    Discount = table.Column<decimal>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Order", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Order_Tables_TableId",
+                        name: "FK_Order_Table_TableId",
                         column: x => x.TableId,
-                        principalTable: "Tables",
+                        principalTable: "Table",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Items",
+                name: "OrderItem",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    Description = table.Column<string>(nullable: true),
-                    Price = table.Column<decimal>(nullable: false),
-                    Image = table.Column<string>(nullable: true),
-                    OrderId = table.Column<Guid>(nullable: true)
+                    OrderId = table.Column<Guid>(nullable: true),
+                    ItemId = table.Column<Guid>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Items", x => x.Id);
+                    table.PrimaryKey("PK_OrderItem", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Items_Order_OrderId",
+                        name: "FK_OrderItem_Item_ItemId",
+                        column: x => x.ItemId,
+                        principalTable: "Item",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_OrderItem_Order_OrderId",
                         column: x => x.OrderId,
                         principalTable: "Order",
                         principalColumn: "Id",
@@ -60,26 +79,34 @@ namespace Cedris.Restaurant.Infra.Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Items_OrderId",
-                table: "Items",
-                column: "OrderId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Order_TableId",
                 table: "Order",
                 column: "TableId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OrderItem_ItemId",
+                table: "OrderItem",
+                column: "ItemId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OrderItem_OrderId",
+                table: "OrderItem",
+                column: "OrderId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Items");
+                name: "OrderItem");
+
+            migrationBuilder.DropTable(
+                name: "Item");
 
             migrationBuilder.DropTable(
                 name: "Order");
 
             migrationBuilder.DropTable(
-                name: "Tables");
+                name: "Table");
         }
     }
 }

@@ -12,9 +12,9 @@ namespace Cedris.Restaurant.API.Controllers
     [ApiController]
     public class TablesController : ControllerBase
     {
-        private readonly TablesContext _context;
+        private readonly EfDbContext _context;
 
-        public TablesController(TablesContext context)
+        public TablesController(EfDbContext context)
         {
             _context = context;
         }
