@@ -31,7 +31,8 @@ namespace Cedris.Restaurant.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<OrdersContext>(options=>options.UseSqlServer(Configuration.GetConnectionString("CedrisConnectionString")));
-
+            services.AddDbContext<ItemsContext>(options=>options.UseSqlServer(Configuration.GetConnectionString("CedrisConnectionString")));
+            services.AddDbContext<TablesContext>(options=>options.UseSqlServer(Configuration.GetConnectionString("CedrisConnectionString")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
