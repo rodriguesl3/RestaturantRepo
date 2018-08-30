@@ -27,8 +27,7 @@ namespace Cedris.Restaurant.API.Controllers
             return _context.OrderItem;
         }
 
-        [HttpGet]
-
+      
         [HttpGet("{id}")]
         public ActionResult<OrderItem> GetById(Guid id)
         {
