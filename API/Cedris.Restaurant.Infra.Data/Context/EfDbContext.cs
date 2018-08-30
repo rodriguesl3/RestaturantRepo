@@ -10,7 +10,6 @@ namespace Cedris.Restaurant.Infra.Data.Context
         {
 
         }
-
         public DbSet<Item> Items { get; set; }
         public DbSet<Order> Order { get; set; }
         public DbSet<Table> Tables { get; set; }

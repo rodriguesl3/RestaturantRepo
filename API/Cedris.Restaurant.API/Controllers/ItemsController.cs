@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Cedris.Restaurant.Domain.Entities;
 using Cedris.Restaurant.Infra.Data.Context;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Cedris.Restaurant.API.Controllers
 {
@@ -26,10 +27,24 @@ namespace Cedris.Restaurant.API.Controllers
             return _context.Items;
         }
 
+        [HttpGet]
+
+        [HttpGet("{id}")]
+        public ActionResult<Item> GetById(Guid id)
+        {
+            try
+            {
+                return Ok(_context.Items.FirstOrDefault(x => x.Id == id));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
+
         [HttpPost]
         public IActionResult Post([FromBody]Item item)
         {
-
             try
             {
                 _context.Items.Add(item);
@@ -42,5 +57,38 @@ namespace Cedris.Restaurant.API.Controllers
                 return BadRequest(ex);
             }
         }
+
+        [HttpPut]
+        public IActionResult Put(Guid id, [FromBody] Item item)
+        {
+            try
+            {
+                _context.Entry(item).State = EntityState.Modified;
+                _context.SaveChanges();
+                return Ok("Created successfully");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
+
+        [HttpDelete]
+        public ActionResult Delete(Item item)
+        {
+            try
+            {
+                _context.Entry(item).State = EntityState.Deleted;
+                _context.SaveChanges();
+                return Ok("Item removed successfully");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
+
+
+
     }
 }
