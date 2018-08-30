@@ -1,0 +1,9 @@
+C:\desenv\Cedris.Restaurant.Domain\bin\Debug\netstandard2.0\Cedris.Restaurant.Domain.deps.json
+C:\desenv\Cedris.Restaurant.Domain\bin\Debug\netstandard2.0\Cedris.Restaurant.Domain.dll
+C:\desenv\Cedris.Restaurant.Domain\bin\Debug\netstandard2.0\Cedris.Restaurant.Domain.pdb
+C:\desenv\Cedris.Restaurant.Domain\obj\Debug\netstandard2.0\Cedris.Restaurant.Domain.csprojAssemblyReference.cache
+C:\desenv\Cedris.Restaurant.Domain\obj\Debug\netstandard2.0\Cedris.Restaurant.Domain.csproj.CoreCompileInputs.cache
+C:\desenv\Cedris.Restaurant.Domain\obj\Debug\netstandard2.0\Cedris.Restaurant.Domain.AssemblyInfoInputs.cache
+C:\desenv\Cedris.Restaurant.Domain\obj\Debug\netstandard2.0\Cedris.Restaurant.Domain.AssemblyInfo.cs
+C:\desenv\Cedris.Restaurant.Domain\obj\Debug\netstandard2.0\Cedris.Restaurant.Domain.dll
+C:\desenv\Cedris.Restaurant.Domain\obj\Debug\netstandard2.0\Cedris.Restaurant.Domain.pdb
