@@ -19,7 +19,7 @@ namespace Cedris.Restaurant.API
     {
         public Startup(IConfiguration configuration)
         {
-            
+
 
 
             Configuration = configuration;
@@ -30,9 +30,15 @@ namespace Cedris.Restaurant.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<OrdersContext>(options=>options.UseSqlServer(Configuration.GetConnectionString("CedrisConnectionString")));
-            services.AddDbContext<ItemsContext>(options=>options.UseSqlServer(Configuration.GetConnectionString("CedrisConnectionString")));
-            services.AddDbContext<TablesContext>(options=>options.UseSqlServer(Configuration.GetConnectionString("CedrisConnectionString")));
+            services.AddDbContext<EfDbContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("CedrisConnectionString"));
+            });
+
+
+            // services.AddDbContext<OrdersContext>(options=>options.UseSqlServer(Configuration.GetConnectionString("CedrisConnectionString")));
+            // services.AddDbContext<ItemsContext>(options=>options.UseSqlServer(Configuration.GetConnectionString("CedrisConnectionString")));
+            // services.AddDbContext<TablesContext>(options=>options.UseSqlServer(Configuration.GetConnectionString("CedrisConnectionString")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

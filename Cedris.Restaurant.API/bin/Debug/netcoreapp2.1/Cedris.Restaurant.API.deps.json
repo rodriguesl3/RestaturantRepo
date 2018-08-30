@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "2a4455b692a4620832992b2d5cbc11fa3abc7272"
+    "signature": "ab3d01bf0e9a34f1141e8503467a926407b82d72"
   },
   "compilationOptions": {
     "defines": [
@@ -70,6 +70,21 @@
         }
       },
       "Microsoft.EntityFrameworkCore.Analyzers/2.1.2": {},
+      "Microsoft.EntityFrameworkCore.Design/2.1.2": {
+        "dependencies": {
+          "Microsoft.CSharp": "4.5.0",
+          "Microsoft.EntityFrameworkCore.Relational": "2.1.2"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Design.dll": {
+            "assemblyVersion": "2.1.2.0",
+            "fileVersion": "2.1.2.18207"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Design.dll": {}
+        }
+      },
       "Microsoft.EntityFrameworkCore.Relational/2.1.2": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "2.1.2"
@@ -332,6 +347,7 @@
       "Cedris.Restaurant.Infra.Data/1.0.0": {
         "dependencies": {
           "Cedris.Restaurant.Domain": "1.0.0",
+          "Microsoft.EntityFrameworkCore.Design": "2.1.2",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.1.2"
         },
         "runtime": {
@@ -487,7 +503,7 @@
           "Microsoft.EntityFrameworkCore": "2.1.2",
           "Microsoft.EntityFrameworkCore.Abstractions": "2.1.2",
           "Microsoft.EntityFrameworkCore.Analyzers": "2.1.2",
-          "Microsoft.EntityFrameworkCore.Design": "2.1.1",
+          "Microsoft.EntityFrameworkCore.Design": "2.1.2",
           "Microsoft.EntityFrameworkCore.InMemory": "2.1.1",
           "Microsoft.EntityFrameworkCore.Relational": "2.1.2",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.1.2",
@@ -1637,16 +1653,6 @@
         },
         "compileOnly": true
       },
-      "Microsoft.EntityFrameworkCore.Design/2.1.1": {
-        "dependencies": {
-          "Microsoft.CSharp": "4.5.0",
-          "Microsoft.EntityFrameworkCore.Relational": "2.1.2"
-        },
-        "compile": {
-          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Design.dll": {}
-        },
-        "compileOnly": true
-      },
       "Microsoft.EntityFrameworkCore.InMemory/2.1.1": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "2.1.2"
@@ -1658,7 +1664,7 @@
       },
       "Microsoft.EntityFrameworkCore.Tools/2.1.1": {
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.Design": "2.1.1"
+          "Microsoft.EntityFrameworkCore.Design": "2.1.2"
         },
         "compileOnly": true
       },
@@ -3223,6 +3229,13 @@
       "path": "microsoft.entityframeworkcore.analyzers/2.1.2",
       "hashPath": "microsoft.entityframeworkcore.analyzers.2.1.2.nupkg.sha512"
     },
+    "Microsoft.EntityFrameworkCore.Design/2.1.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ioo474OkMqM0F7yh4pox8k3rH1NsS3U/0pOjRGv/o/RAvGjyvBF/lCG6JUPaDLj6JVnzPAw7KZ3ISfPTUBPuGw==",
+      "path": "microsoft.entityframeworkcore.design/2.1.2",
+      "hashPath": "microsoft.entityframeworkcore.design.2.1.2.nupkg.sha512"
+    },
     "Microsoft.EntityFrameworkCore.Relational/2.1.2": {
       "type": "package",
       "serviceable": true,
@@ -4023,13 +4036,6 @@
       "sha512": "sha512-wkCXkBS0q+5hsbeikjfsHCGP3nNe1L1MrDEBPCBKm+4UH8nXqHLxDZuBrTYaVY85CGIx2y1qW90nO6b+ORAfrA==",
       "path": "microsoft.dotnet.platformabstractions/2.1.0",
       "hashPath": "microsoft.dotnet.platformabstractions.2.1.0.nupkg.sha512"
-    },
-    "Microsoft.EntityFrameworkCore.Design/2.1.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-/kmRSJHgtcng6eNsy7ab3Ac2ofqqoQAZTiTPMKlLaD6WaEG0t5KJuj71/jAMo9LGgaeKGMI0m5wmG+LsIAlaSA==",
-      "path": "microsoft.entityframeworkcore.design/2.1.1",
-      "hashPath": "microsoft.entityframeworkcore.design.2.1.1.nupkg.sha512"
     },
     "Microsoft.EntityFrameworkCore.InMemory/2.1.1": {
       "type": "package",

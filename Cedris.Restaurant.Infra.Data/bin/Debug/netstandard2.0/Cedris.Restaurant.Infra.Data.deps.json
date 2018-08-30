@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETStandard,Version=v2.0/",
-    "signature": "5a241bbe5fc5e50f9a9f53f5f25acf06ce0b5402"
+    "signature": "0de3ae8b69458969dd442e81dfc9f2334f36375a"
   },
   "compilationOptions": {},
   "targets": {
@@ -10,11 +10,20 @@
       "Cedris.Restaurant.Infra.Data/1.0.0": {
         "dependencies": {
           "Cedris.Restaurant.Domain": "1.0.0",
+          "Microsoft.EntityFrameworkCore.Design": "2.1.2",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.1.2",
           "NETStandard.Library": "2.0.3"
         },
         "runtime": {
           "Cedris.Restaurant.Infra.Data.dll": {}
+        }
+      },
+      "Microsoft.CSharp/4.5.0": {
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.CSharp.dll": {
+            "assemblyVersion": "4.0.4.0",
+            "fileVersion": "4.6.26515.6"
+          }
         }
       },
       "Microsoft.EntityFrameworkCore/2.1.2": {
@@ -46,6 +55,18 @@
         }
       },
       "Microsoft.EntityFrameworkCore.Analyzers/2.1.2": {},
+      "Microsoft.EntityFrameworkCore.Design/2.1.2": {
+        "dependencies": {
+          "Microsoft.CSharp": "4.5.0",
+          "Microsoft.EntityFrameworkCore.Relational": "2.1.2"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Design.dll": {
+            "assemblyVersion": "2.1.2.0",
+            "fileVersion": "2.1.2.18207"
+          }
+        }
+      },
       "Microsoft.EntityFrameworkCore.Relational/2.1.2": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "2.1.2"
@@ -606,6 +627,13 @@
       "serviceable": false,
       "sha512": ""
     },
+    "Microsoft.CSharp/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-EGoBmf3Na2ppbhPePDE9PlX81r1HuOZH5twBrq7couJZiPTjUnD3648balerQJO6EJ8Sj+43+XuRwQ7r+3tE3w==",
+      "path": "microsoft.csharp/4.5.0",
+      "hashPath": "microsoft.csharp.4.5.0.nupkg.sha512"
+    },
     "Microsoft.EntityFrameworkCore/2.1.2": {
       "type": "package",
       "serviceable": true,
@@ -626,6 +654,13 @@
       "sha512": "sha512-E69ng8rH5o+hwxkdVBkgnn/I+F1OiIy5I0cRtlEVYj35LxtEswQ0DD5lnCne3mw6JqURfUtOXQj8804stYTWuA==",
       "path": "microsoft.entityframeworkcore.analyzers/2.1.2",
       "hashPath": "microsoft.entityframeworkcore.analyzers.2.1.2.nupkg.sha512"
+    },
+    "Microsoft.EntityFrameworkCore.Design/2.1.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ioo474OkMqM0F7yh4pox8k3rH1NsS3U/0pOjRGv/o/RAvGjyvBF/lCG6JUPaDLj6JVnzPAw7KZ3ISfPTUBPuGw==",
+      "path": "microsoft.entityframeworkcore.design/2.1.2",
+      "hashPath": "microsoft.entityframeworkcore.design.2.1.2.nupkg.sha512"
     },
     "Microsoft.EntityFrameworkCore.Relational/2.1.2": {
       "type": "package",
