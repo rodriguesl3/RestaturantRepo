@@ -11,13 +11,21 @@ All projects are developed using VS Code without solution and all references was
 Necessary to install .net core sdk and .net core runtime, angular/cli.
 
 After all stuff intalled, you need to restore each part of archtecture (Backend and frontend)
+
 1) Restoring backend
+
     1.1 - open terminal on API Folder
+
     1.2 - restore backend application using 'dotnet restore'
+
     1.3 - make sure appsettings.json is configured with  your database credentials
+
     1.4 - update SQL Server application using Migration using net cli command 'dotnet ef database update --startup-project ..\Cedris.Restaurant.API\ --context EfDbContext'
+
     1.5 - accessing API project, build your api project using 'dotnet build'
+
     1.6 - if all previous steps were successfully, run API project executing 'dotnet run'
+
 
 2) Restoring frontend 
     2.1 - open terminal on APP/restaurant-app Folder
