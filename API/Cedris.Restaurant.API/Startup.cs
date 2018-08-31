@@ -39,7 +39,10 @@ namespace Cedris.Restaurant.API
                 options.AddPolicy("AllowSpecificOrigins",
                 builder =>
                 {
-                    builder.WithOrigins("http://localhost:4200", "http://www.contoso.com");
+                    // builder.WithOrigins("http://localhost:4200", "http://www.contoso.com");
+                    builder.AllowAnyHeader();
+                    builder.AllowAnyMethod();
+                    builder.AllowAnyOrigin();
                 });
             });
 

@@ -1,14 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule, 
          MatSidenavModule, 
          MatToolbarModule,
          MatListModule,
-         MatDialogModule } from '@angular/material';
+         MatDialogModule, 
+         MatFormFieldModule,
+         MatSelectModule,
+         MatInputModule} from '@angular/material';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -45,6 +48,7 @@ import { BaseUtil } from './shared/base-util';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     HttpClientModule,
     AppRoutingModule,
@@ -52,7 +56,10 @@ import { BaseUtil } from './shared/base-util';
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
-    MatDialogModule
+    MatDialogModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule
   ],
   providers: [TablesService, BaseUtil],
   

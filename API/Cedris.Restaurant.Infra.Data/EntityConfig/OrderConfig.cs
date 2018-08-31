@@ -10,7 +10,7 @@ public class OrderConfig : IEntityTypeConfiguration<Order>
         //builder.Property(o=>o.DateTime).HasColumnType("DateTime");
         builder.Property(x => x.Id).IsRequired();
         builder.Property(o => o.Date).IsRequired();
-
+        
         //builder.Property(o => o.Discount).HasPrecision(20,10);
         builder.HasKey(o => o.Id);
     }

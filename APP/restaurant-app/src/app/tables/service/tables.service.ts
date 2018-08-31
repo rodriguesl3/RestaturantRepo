@@ -18,8 +18,8 @@ export class TablesService {
     return this._http.post<Table>(this._base.baseUrl + 'tables', newTable);
   }
 
-  updateTable(adjustTable: Table): Observable<Table>{
-    return this._http.put<Table>(this._base.baseUrl+'tables',adjustTable);
+  updateTable(adjustTable: Table): Observable<Table> {
+    return this._http.put<Table>(this._base.baseUrl + 'tables?id=' + adjustTable.id, adjustTable);
   }
 
 }

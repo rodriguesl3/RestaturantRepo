@@ -14,5 +14,6 @@ namespace Cedris.Restaurant.Domain.Entities
         public Table Table { get; set; }
         public decimal Discount { get; set; }
         public DateTime Date { get; set; }
+       
     }
 }

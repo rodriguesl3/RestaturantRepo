@@ -23,20 +23,25 @@ export class TablesComponent implements OnInit {
   ngOnInit() {
     this.getTables();
   }
-  
+
 
   openDialog(table: Table): void {
+    if (!table) {
+      table = new Table();
+    }
     const dialogRef = this.dialog.open(ModalTableComponent, {
       data: {
         "description": table.description || "",
-        "numberAlias": table.numberAlias || ""
+        "numberAlias": table.numberAlias || "",
+        "id": table.id
       }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      debugger;
-      console.log(result);
-      //this.updateTable(result);
+      if (result.id)
+        this.updateTable(result);
+      else
+        this.addTable(result);
     })
   }
 
@@ -48,11 +53,15 @@ export class TablesComponent implements OnInit {
   }
 
   updateTable(table: Table): void {
-    
+
     this._tbService.updateTable(table).subscribe(res => {
       let idxOldTable = this.tableList.findIndex(x => x.id == res.id);
       this.tableList[idxOldTable] = table;
     })
+  }
+
+  addTable(newTable: Table): void {
+    this._tbService.addTable(newTable).subscribe(res => { this.tableList.push(res) });
   }
 
 

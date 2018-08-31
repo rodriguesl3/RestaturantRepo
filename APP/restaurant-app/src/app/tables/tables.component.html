@@ -1,3 +1,5 @@
+<button mat-button color="accent" (click)="openDialog(updatedTable)">Enviar</button>
+
 <div class="container">
   <div mat-button (click)="openDialog(table)" class="tableDiv" *ngFor='let table of tableList'>
     <h4>{{table.description}}</h4>
