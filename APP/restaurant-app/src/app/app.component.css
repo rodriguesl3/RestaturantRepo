@@ -1,0 +1,13 @@
+.root-container{
+    width: 100%;
+    height: 100vh;
+}
+
+.side-container{
+    width: 15%;
+}
+
+.side-content{
+    padding:20px;
+    font-size: 25px;
+}

@@ -1,7 +1,6 @@
-
-
-  <div *ngFor='let table of tableList'>
-    <span>
-      {{table.description}}
-    </span>
+<div class="container">
+  <div mat-button (click)="openDialog(table)" class="tableDiv" *ngFor='let table of tableList'>
+    <h4>{{table.description}}</h4>
+    <i class="fas fa-table fa-5x"></i>    
   </div>
+</div>

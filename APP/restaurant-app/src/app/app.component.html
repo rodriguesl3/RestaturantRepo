@@ -1,6 +1,36 @@
-<h1>
-  {{title}}
-</h1>
-<app-tables></app-tables>
-<app-main></app-main>
-<router-outlet></router-outlet>
+<mat-sidenav-container class="root-container">
+  <mat-sidenav class="side-container" hasBackdrop="true" #sidenav mode="over" [(opened)]="opened" (click)="sidenav.toggle()">
+    <div class="side-content">
+      <mat-list>
+          <mat-list-item>
+              <a [routerLink]="['/']" mat-button color="warn">
+                Inicio
+              </a>
+            </mat-list-item>
+        <mat-list-item>
+          <a [routerLink]="['/tables']" mat-button color="warn">
+            Mesas 
+          </a>
+        </mat-list-item>
+        <mat-list-item>
+            <a [routerLink]="['/orders']" mat-button color="warn">
+              Pedidos 
+            </a>
+        </mat-list-item>
+        <mat-list-item>
+            <a [routerLink]="['/appointment']" mat-button color="warn">
+              Reserva 
+            </a>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button mat-button color="warn" (click)="sidenav.toggle()"><i class="fas fa-bars fa-3x"></i></button>
+      <span class="example-fill-remaining-space"></span>
+      <span>Cedris Restaurant SA.</span>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
