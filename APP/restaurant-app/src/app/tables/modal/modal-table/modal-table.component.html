@@ -10,7 +10,7 @@
         </mat-form-field>
       
         <mat-form-field>
-          <mat-select placeholder="Status">
+          <mat-select formControlName="status" [(ngModel)]="status" placeholder="Status">
             <mat-option value="true">Livre</mat-option>
             <mat-option value="false">Ocupado</mat-option>
           </mat-select>

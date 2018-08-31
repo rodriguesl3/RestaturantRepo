@@ -41,23 +41,22 @@ namespace Cedris.Restaurant.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody]Table table)
+        public ActionResult<string> Post([FromBody]Table table)
         {
             try
             {
                 _context.Tables.Add(table);
                 _context.SaveChanges();
-
                 return Ok("Created successfully");
             }
             catch (Exception ex)
             {
-                return BadRequest(ex);
+                return BadRequest(ex.Message);
             }
         }
 
         [HttpPut]
-        public IActionResult Put(Guid id, [FromBody] Table table)
+        public ActionResult<string> Put(Guid id, [FromBody] Table table)
         {
             try
             {
@@ -67,7 +66,7 @@ namespace Cedris.Restaurant.API.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(ex);
+                return BadRequest(ex.Message);
             }
         }
 

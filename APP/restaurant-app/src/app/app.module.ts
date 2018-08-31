@@ -11,7 +11,8 @@ import { MatButtonModule,
          MatDialogModule, 
          MatFormFieldModule,
          MatSelectModule,
-         MatInputModule} from '@angular/material';
+         MatInputModule,
+         MatSnackBarModule} from '@angular/material';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -27,6 +28,7 @@ import { ModalTableComponent } from './tables/modal/modal-table/modal-table.comp
 import { MainComponent } from './main/main.component';
 import { TablesService } from './tables/service/tables.service';
 import { BaseUtil } from './shared/base-util';
+import { SnackbarComponent } from './shared/snackbar/snackbar.component';
 
 
 
@@ -39,7 +41,8 @@ import { BaseUtil } from './shared/base-util';
     ItemsComponent,
     MainComponent,
     AppointmentComponent,
-    ModalTableComponent
+    ModalTableComponent,
+    SnackbarComponent
   ],
   entryComponents: [
     ModalTableComponent,
@@ -59,7 +62,8 @@ import { BaseUtil } from './shared/base-util';
     MatDialogModule,
     MatFormFieldModule,
     MatSelectModule,
-    MatInputModule
+    MatInputModule,
+    MatSnackBarModule
   ],
   providers: [TablesService, BaseUtil],
   

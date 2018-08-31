@@ -2,8 +2,9 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { Table } from './model/table';
 import { Observable } from 'rxjs';
 import { TablesService } from './service/tables.service';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 import { ModalTableComponent } from './modal/modal-table/modal-table.component';
+import { SnackbarComponent } from '../shared/snackbar/snackbar.component';
 
 
 @Component({
@@ -18,7 +19,8 @@ export class TablesComponent implements OnInit {
 
 
   constructor(private _tbService: TablesService,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog,
+    public snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.getTables();
@@ -33,7 +35,8 @@ export class TablesComponent implements OnInit {
       data: {
         "description": table.description || "",
         "numberAlias": table.numberAlias || "",
-        "id": table.id
+        "id": table.id,
+        "status": table.status
       }
     });
 
@@ -44,11 +47,10 @@ export class TablesComponent implements OnInit {
         this.addTable(result);
     })
   }
-
-
-
+  
   getTables(): void {
-    this._tbService.getTables().subscribe(tbls => this.tableList = tbls,
+    this._tbService.getTables().subscribe(
+      tbls => this.tableList = tbls,
       err => this.errorMessage = err);
   }
 
@@ -57,12 +59,21 @@ export class TablesComponent implements OnInit {
     this._tbService.updateTable(table).subscribe(res => {
       let idxOldTable = this.tableList.findIndex(x => x.id == res.id);
       this.tableList[idxOldTable] = table;
+      this.openSnackBar('Alterado com sucesso', 'fechar')
     })
   }
 
   addTable(newTable: Table): void {
-    this._tbService.addTable(newTable).subscribe(res => { this.tableList.push(res) });
+    this._tbService.addTable(newTable).subscribe(res => {
+      this.tableList.push(res);
+      this.openSnackBar('Adicionado com sucesso', 'fechar')
+    });
   }
 
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 5000,
+    });
+  }
 
 }

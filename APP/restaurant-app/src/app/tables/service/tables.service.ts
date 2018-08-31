@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 import { BaseUtil } from '../../shared/base-util';
@@ -14,12 +14,11 @@ export class TablesService {
     return this._http.get<Table[]>(this._base.baseUrl + 'tables');
   }
 
-  addTable(newTable: Table): Observable<Table> {
-    return this._http.post<Table>(this._base.baseUrl + 'tables', newTable);
+  addTable(newTable: Table): Observable<any> {
+    return this._http.post(this._base.baseUrl + 'tables', newTable, {responseType: 'text'});
   }
 
-  updateTable(adjustTable: Table): Observable<Table> {
-    return this._http.put<Table>(this._base.baseUrl + 'tables?id=' + adjustTable.id, adjustTable);
+  updateTable(adjustTable: Table): Observable<any> {
+    return this._http.put(this._base.baseUrl + 'tables?id=' + adjustTable.id, adjustTable, {responseType: 'text'});
   }
-
 }
