@@ -2,7 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import {MatButtonModule} from '@angular/material/button';
+import { HttpClientModule } from '@angular/common/http';
+import { MatButtonModule } from '@angular/material/button';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +15,8 @@ import { TablesComponent } from './tables/tables.component';
 import { ItemsComponent } from './items/items.component';
 
 import { MainComponent } from './main/main.component';
+import { TablesService } from './tables/service/tables.service';
+import { BaseUtil } from './shared/base-util';
 
 
 @NgModule({
@@ -29,9 +32,10 @@ import { MainComponent } from './main/main.component';
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    MatButtonModule
+    MatButtonModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [TablesService, BaseUtil],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

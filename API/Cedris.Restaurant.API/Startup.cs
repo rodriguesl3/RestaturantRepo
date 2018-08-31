@@ -29,22 +29,18 @@ namespace Cedris.Restaurant.API
         {
             services.AddDbContext<EfDbContext>(options =>
             {
-                
+
                 options.UseSqlServer(Configuration.GetConnectionString("CedrisConnectionString"));
             });
 
-            
+
             services.AddCors(options =>
             {
-                options.AddPolicy("AllowAll",
-                    builder =>
-                    {
-                        builder
-                        .AllowAnyOrigin()
-                        .AllowAnyMethod()
-                        .AllowAnyHeader()
-                        .AllowCredentials();
-                    });
+                options.AddPolicy("AllowSpecificOrigins",
+                builder =>
+                {
+                    builder.WithOrigins("http://localhost:4200", "http://www.contoso.com");
+                });
             });
 
 
@@ -68,6 +64,7 @@ namespace Cedris.Restaurant.API
             }
 
             app.UseHttpsRedirection();
+            app.UseCors("AllowSpecificOrigins");
             app.UseMvc();
         }
     }
