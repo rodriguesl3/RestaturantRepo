@@ -8,7 +8,6 @@ namespace Cedris.Restaurant.Domain.Entities
         {
             Id = Guid.NewGuid();
         }
-
         public Guid Id { get; set; }
         public string Description { get; set; }
         public int NumberAlias { get; set; }
