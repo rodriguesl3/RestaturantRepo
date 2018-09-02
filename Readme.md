@@ -12,7 +12,7 @@ Necessary to install .net core sdk and .net core runtime, angular/cli.
 
 After all stuff intalled, you need to restore each part of archtecture (Backend and frontend)
 
-#1) Restoring backend
+## 1) Restoring backend
 
     1.1 - open terminal on API Folder
 
@@ -27,7 +27,7 @@ After all stuff intalled, you need to restore each part of archtecture (Backend 
     1.6 - if all previous steps were successfully, run API project executing 'dotnet run'
 
 
-#2) Restoring frontend 
+## 2) Restoring frontend 
 
     2.1 - open terminal on APP/restaurant-app Folder
 
