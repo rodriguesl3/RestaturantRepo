@@ -2,25 +2,25 @@
   <mat-sidenav class="side-container" hasBackdrop="true" #sidenav mode="over" [(opened)]="opened" (click)="sidenav.toggle()">
     <div class="side-content">
       <mat-list>
-          <mat-list-item>
-              <a [routerLink]="['/']" mat-button color="warn">
-                Inicio
-              </a>
-            </mat-list-item>
         <mat-list-item>
-          <a [routerLink]="['/tables']" mat-button color="warn">
-            Mesas 
+          <a [routerLink]="['/']" mat-button color="warn">
+            Inicio
           </a>
         </mat-list-item>
         <mat-list-item>
-            <a [routerLink]="['/orders']" mat-button color="warn">
-              Pedidos 
-            </a>
+          <a [routerLink]="['/tables']" mat-button color="warn">
+            Mesas
+          </a>
         </mat-list-item>
         <mat-list-item>
-            <a [routerLink]="['/appointment']" mat-button color="warn">
-              Reserva 
-            </a>
+          <a [routerLink]="['/orders']" mat-button color="warn">
+            Pedidos
+          </a>
+        </mat-list-item>
+        <mat-list-item>
+          <a [routerLink]="['/items']" mat-button color="warn">
+            Itens
+          </a>
         </mat-list-item>
       </mat-list>
     </div>

@@ -21,10 +21,20 @@ namespace Cedris.Restaurant.API.Controllers
         }
 
 
+        [Route("/api/orderTable")]
+        [HttpGet]
+        public ActionResult<Order> Get(Guid tableId)
+        {
+            var order = _context.Order.OrderByDescending(x => x.Date).LastOrDefault(x => x.TableId == tableId);
+            
+            return order;
+        }
+
+
         [HttpGet]
         public ActionResult<IEnumerable<Order>> Get()
         {
-            return _context.Order;
+            return _context.Order.ToList();
         }
 
         [HttpGet("{id}")]
@@ -45,7 +55,18 @@ namespace Cedris.Restaurant.API.Controllers
         {
             try
             {
+                //_context.OrderItems.AddRange(order.OrderItem)
+
                 _context.Order.Add(order);
+                _context.SaveChanges();
+
+                order.OrderItem.ForEach(x =>
+                {
+                    x.Order = null;
+                    x.OrderId = order.Id;
+                });
+
+                _context.OrderItems.AddRange(order.OrderItem);
                 _context.SaveChanges();
 
                 return Ok("Created successfully");
@@ -57,11 +78,11 @@ namespace Cedris.Restaurant.API.Controllers
         }
 
         [HttpPut]
-        public IActionResult Put(Guid id, [FromBody] Order item)
+        public IActionResult Put(Guid id, [FromBody] Order order)
         {
             try
             {
-                _context.Entry(item).State = EntityState.Modified;
+                _context.Entry(order).State = EntityState.Modified;
                 _context.SaveChanges();
                 return Ok("Created successfully");
             }

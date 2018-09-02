@@ -1,0 +1,25 @@
+<form [formGroup]="fgOrder">
+
+    <h3>Encerramento Pedido Valor Total informado</h3>
+
+
+    
+    <mat-form-field>
+      <input matInput formControlName="TotalPrice" placeholder="descrição">
+    </mat-form-field>
+  
+    <mat-form-field>
+      <!-- <textarea matInput placeholder="Textarea"></textarea> -->
+      <input matInput formControlName="numberAlias" placeholder="Numero da mesa">
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-select formControlName="status" [(ngModel)]="status" placeholder="Status">
+        <mat-option value="true">Livre</mat-option>
+        <mat-option value="false">Ocupado</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-button color="accent" (click)="onSendClick(fgOrder)">Enviar</button>
+    <button mat-button color="accent" (click)="onNoClick()">Cancelar</button>
+  
+  </form>

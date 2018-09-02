@@ -4,15 +4,20 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
-import { MatButtonModule, 
-         MatSidenavModule, 
-         MatToolbarModule,
-         MatListModule,
-         MatDialogModule, 
-         MatFormFieldModule,
-         MatSelectModule,
-         MatInputModule,
-         MatSnackBarModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatSidenavModule,
+  MatToolbarModule,
+  MatListModule,
+  MatDialogModule,
+  MatFormFieldModule,
+  MatSelectModule,
+  MatInputModule,
+  MatSnackBarModule,
+  MatCardModule,
+  MatGridListModule,
+  MatTableModule
+} from '@angular/material';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -22,13 +27,16 @@ import { AppComponent } from './app.component';
 import { OrdersComponent } from './orders/orders.component';
 import { TablesComponent } from './tables/tables.component';
 import { ItemsComponent } from './items/items.component';
-import { AppointmentComponent } from './appointment/appointment.component';
 import { ModalTableComponent } from './tables/modal/modal-table/modal-table.component';
 
 import { MainComponent } from './main/main.component';
 import { TablesService } from './tables/service/tables.service';
 import { BaseUtil } from './shared/base-util';
 import { SnackbarComponent } from './shared/snackbar/snackbar.component';
+import { ItemsService } from './items/service/items.service';
+import { ModalItemComponent } from './items/modal/modal-item/modal-item.component';
+import { OrdersService } from './orders/service/orders.service';
+import { ModalOrderComponent } from './orders/modal/modal-order/modal-order.component';
 
 
 
@@ -40,13 +48,16 @@ import { SnackbarComponent } from './shared/snackbar/snackbar.component';
     TablesComponent,
     ItemsComponent,
     MainComponent,
-    AppointmentComponent,
     ModalTableComponent,
-    SnackbarComponent
+    SnackbarComponent,
+    ModalItemComponent,
+    ModalOrderComponent
   ],
   entryComponents: [
     ModalTableComponent,
-],
+    ModalItemComponent,
+    ModalOrderComponent
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -63,10 +74,13 @@ import { SnackbarComponent } from './shared/snackbar/snackbar.component';
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatCardModule,
+    MatGridListModule,
+    MatTableModule
   ],
-  providers: [TablesService, BaseUtil],
-  
+  providers: [TablesService, BaseUtil, ItemsService, OrdersService],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

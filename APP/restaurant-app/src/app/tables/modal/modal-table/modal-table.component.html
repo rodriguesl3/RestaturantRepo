@@ -1,23 +1,20 @@
+<form [formGroup]="fgTable">
+  <mat-form-field>
+    <input matInput formControlName="description" placeholder="descrição">
+  </mat-form-field>
 
-    <form [formGroup]="fgTable" class="example-container">
-        <mat-form-field>
-          <input matInput formControlName="description" placeholder="descrição">
-        </mat-form-field>
-      
-        <mat-form-field>
-          <!-- <textarea matInput placeholder="Textarea"></textarea> -->
-          <input matInput formControlName="numberAlias"  placeholder="Numero da mesa">
-        </mat-form-field>
-      
-        <mat-form-field>
-          <mat-select formControlName="status" [(ngModel)]="status" placeholder="Status">
-            <mat-option value="true">Livre</mat-option>
-            <mat-option value="false">Ocupado</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <button mat-button color="accent" (click)="onSendClick(fgTable)">Enviar</button>
-        <button mat-button color="accent" (click)="onNoClick()">Cancelar</button>
-    
-      </form>
+  <mat-form-field>
+    <!-- <textarea matInput placeholder="Textarea"></textarea> -->
+    <input matInput formControlName="numberAlias" placeholder="Numero da mesa">
+  </mat-form-field>
 
+  <mat-form-field>
+    <mat-select formControlName="status" [(ngModel)]="status" placeholder="Status">
+      <mat-option value="true">Livre</mat-option>
+      <mat-option value="false">Ocupado</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-button color="accent" (click)="onSendClick(fgTable)">Enviar</button>
+  <button mat-button color="accent" (click)="onNoClick()">Cancelar</button>
 
+</form>

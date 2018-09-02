@@ -4,14 +4,16 @@ using Cedris.Restaurant.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Cedris.Restaurant.Infra.Data.Migrations
 {
     [DbContext(typeof(EfDbContext))]
-    partial class EfDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180902012554_AdjustOrderItem01092018")]
+    partial class AdjustOrderItem01092018
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -100,7 +102,7 @@ namespace Cedris.Restaurant.Infra.Data.Migrations
             modelBuilder.Entity("Cedris.Restaurant.Domain.Entities.OrderItem", b =>
                 {
                     b.HasOne("Cedris.Restaurant.Domain.Entities.Item", "Item")
-                        .WithMany("OrderItems")
+                        .WithMany()
                         .HasForeignKey("ItemId")
                         .OnDelete(DeleteBehavior.Cascade);
 

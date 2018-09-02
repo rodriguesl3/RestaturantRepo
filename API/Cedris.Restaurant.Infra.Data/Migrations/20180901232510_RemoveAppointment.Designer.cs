@@ -4,14 +4,16 @@ using Cedris.Restaurant.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Cedris.Restaurant.Infra.Data.Migrations
 {
     [DbContext(typeof(EfDbContext))]
-    partial class EfDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180901232510_RemoveAppointment")]
+    partial class RemoveAppointment
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,9 +46,7 @@ namespace Cedris.Restaurant.Infra.Data.Migrations
 
                     b.Property<decimal>("Discount");
 
-                    b.Property<Guid>("TableId");
-
-                    b.Property<decimal>("TotalPrice");
+                    b.Property<Guid?>("TableId");
 
                     b.HasKey("Id");
 
@@ -60,9 +60,9 @@ namespace Cedris.Restaurant.Infra.Data.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<Guid>("ItemId");
+                    b.Property<Guid?>("ItemId");
 
-                    b.Property<Guid>("OrderId");
+                    b.Property<Guid?>("OrderId");
 
                     b.HasKey("Id");
 
@@ -70,7 +70,7 @@ namespace Cedris.Restaurant.Infra.Data.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.ToTable("OrderItems");
+                    b.ToTable("OrderItem");
                 });
 
             modelBuilder.Entity("Cedris.Restaurant.Domain.Entities.Table", b =>
@@ -92,22 +92,19 @@ namespace Cedris.Restaurant.Infra.Data.Migrations
             modelBuilder.Entity("Cedris.Restaurant.Domain.Entities.Order", b =>
                 {
                     b.HasOne("Cedris.Restaurant.Domain.Entities.Table", "Table")
-                        .WithMany("OrdersList")
-                        .HasForeignKey("TableId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .WithMany()
+                        .HasForeignKey("TableId");
                 });
 
             modelBuilder.Entity("Cedris.Restaurant.Domain.Entities.OrderItem", b =>
                 {
                     b.HasOne("Cedris.Restaurant.Domain.Entities.Item", "Item")
-                        .WithMany("OrderItems")
-                        .HasForeignKey("ItemId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .WithMany()
+                        .HasForeignKey("ItemId");
 
                     b.HasOne("Cedris.Restaurant.Domain.Entities.Order", "Order")
-                        .WithMany("OrderItem")
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .WithMany()
+                        .HasForeignKey("OrderId");
                 });
 #pragma warning restore 612, 618
         }

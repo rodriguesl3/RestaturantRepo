@@ -45,6 +45,9 @@ export class TablesComponent implements OnInit {
         this.updateTable(result);
       else
         this.addTable(result);
+
+        //Work arround to solve refresh ngFor, we could use trackBy as well.
+        this.getTables();
     })
   }
   
@@ -57,15 +60,14 @@ export class TablesComponent implements OnInit {
   updateTable(table: Table): void {
 
     this._tbService.updateTable(table).subscribe(res => {
-      let idxOldTable = this.tableList.findIndex(x => x.id == res.id);
-      this.tableList[idxOldTable] = table;
+      this.getTables();
       this.openSnackBar('Alterado com sucesso', 'fechar')
     })
   }
 
   addTable(newTable: Table): void {
     this._tbService.addTable(newTable).subscribe(res => {
-      this.tableList.push(res);
+      this.getTables();
       this.openSnackBar('Adicionado com sucesso', 'fechar')
     });
   }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Cedris.Restaurant.Domain.Entities
 {
@@ -13,5 +14,6 @@ namespace Cedris.Restaurant.Domain.Entities
         public string Description { get; set; }
         public decimal Price { get; set; }
         public string Image { get; set; }
+        public List<OrderItem> OrderItems { get; set; }
     }
 }

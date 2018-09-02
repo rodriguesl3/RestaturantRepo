@@ -13,13 +13,12 @@ namespace Cedris.Restaurant.Infra.Data.Context
         public DbSet<Item> Items { get; set; }
         public DbSet<Order> Order { get; set; }
         public DbSet<Table> Tables { get; set; }
-        public DbSet<OrderItem> OrderItem { get; set; }
-        public DbSet<Appointment> Appointment { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
+     
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new OrderConfig());
-            modelBuilder.ApplyConfiguration(new AppointmentConfig());
+            modelBuilder.ApplyConfiguration(new OrderItemConfig());
             base.OnModelCreating(modelBuilder);
         }
 
