@@ -29,8 +29,11 @@ After all stuff intalled, you need to restore each part of archtecture (Backend 
 
 2) Restoring frontend 
     2.1 - open terminal on APP/restaurant-app Folder
+
     2.2 - restore all references running 'npm install'
+
     2.3 - make sure you angular version install are compatible with this project
+
     2.4 - run angular cli command 'ng serve -o' to execute on browser
         
 
@@ -38,7 +41,15 @@ After all stuff intalled, you need to restore each part of archtecture (Backend 
 
 
 
-## Getting Started
+## Oberview System
+
+* Table screen - on this screen you are able to list all tables inside of restaurant. If you want to edit just click on table to open modal an change detais from that. It has a button to add a new table if necessary.
+
+* Item screen - list all items to create a new order, is possible to edit if is necessary or add new one as well, clicking on "Adicionar Item"
+
+* Order screen - list all tables are occupied and through this view you can add new order or show the price that customer need to pay.
+
+
 
 using git clone on URL repo, restore all references in backend application using dotnet restore 
 and restore all references in frontend application using npm install
