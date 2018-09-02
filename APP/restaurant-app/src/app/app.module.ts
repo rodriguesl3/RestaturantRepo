@@ -37,6 +37,7 @@ import { ItemsService } from './items/service/items.service';
 import { ModalItemComponent } from './items/modal/modal-item/modal-item.component';
 import { OrdersService } from './orders/service/orders.service';
 import { ModalOrderComponent } from './orders/modal/modal-order/modal-order.component';
+import { ModalCreateOrderComponent } from './orders/modal/modal-create-order/modal-create-order.component';
 
 
 
@@ -51,12 +52,14 @@ import { ModalOrderComponent } from './orders/modal/modal-order/modal-order.comp
     ModalTableComponent,
     SnackbarComponent,
     ModalItemComponent,
-    ModalOrderComponent
+    ModalOrderComponent,
+    ModalCreateOrderComponent
   ],
   entryComponents: [
     ModalTableComponent,
     ModalItemComponent,
-    ModalOrderComponent
+    ModalOrderComponent,
+    ModalCreateOrderComponent
   ],
   imports: [
     BrowserModule,

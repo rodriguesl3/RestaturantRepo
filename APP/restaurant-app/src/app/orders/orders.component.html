@@ -1,10 +1,13 @@
-<button mat-raised-button color="primary" (click)="openDialog()">Criar Pedido</button>
-
+<div class="title-item">Mesas ocupadas</div>
 
 <div class="container">
-  <div *ngFor="let table of orderTables" 
-    (click)="openOrderTable(table)" style="width: 200px; height: 200px; border:solid black 2px">
-    {{table.description}} 
-  </div>
+  <mat-card *ngFor="let table of orderTables" class="order-tables">
+    <p>
+      <small>
+          {{table.description}}
+      </small> - {{table.numberAlias}}
+    </p>
+    <button mat-raised-button color="primary" (click)="openCreateOrderTable(table)">Criar Pedido</button>
+    <button mat-raised-button color="accent" (click)="openOrderTable(table)">Fechar Pedido</button>
+  </mat-card>
 </div>
-

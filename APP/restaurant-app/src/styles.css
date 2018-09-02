@@ -1,3 +1,11 @@
+
+
+body {
+    font-size: 25px;
+    font-family: Calibri, 'Gill Sans', 'Gill Sans MT',  'Trebuchet MS', sans-serif !important;
+}
+
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-@import "https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+@import "https://use.fontawesome.com/releases/v5.3.1/css/all.css";
+

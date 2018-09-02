@@ -1,0 +1,19 @@
+<!-- [formGroup]="fgOrder" -->
+<form>
+  <h1>Informe os Itens do Pedido</h1>
+  <!-- Lista de Items -->
+  <mat-list role="list">
+    <mat-selection-list #item>
+      <mat-list-option *ngFor="let item of itemList"
+      (click)="selectingItem(item)">      
+        {{item.description}}
+      </mat-list-option>
+    </mat-selection-list>
+  </mat-list>
+  <p>
+   Quantidade de Itens: {{item.selectedOptions.selected.length}}
+  </p>
+
+  <button mat-button color="accent" (click)="onSendClick(fgOrder)">Enviar</button>
+  <button mat-button color="accent" (click)="onNoClick()">Cancelar</button>
+</form>

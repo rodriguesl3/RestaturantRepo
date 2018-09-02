@@ -5,6 +5,10 @@ import { Table } from '../tables/model/table';
 import { TablesService } from '../tables/service/tables.service';
 import { MatDialog } from '@angular/material';
 import { ModalOrderComponent } from './modal/modal-order/modal-order.component';
+import { ModalCreateOrderComponent } from './modal/modal-create-order/modal-create-order.component';
+import { Jsonp } from '@angular/http';
+import { Items } from '../items/model/items';
+import { OrderItem } from './model/orderItem';
 
 
 @Component({
@@ -17,43 +21,78 @@ export class OrdersComponent implements OnInit {
   ordersList: Order[];
   order: Order;
   orderTables: Table[];
+  tableSelected: Table;
 
-  constructor(private _service: OrdersService, 
+  constructor(private _service: OrdersService,
     private _tbService: TablesService,
-    public dialog: MatDialog,) { }
+    public dialog: MatDialog, ) { }
 
   ngOnInit() {
-    this.getTables();
-
+    this.getTablesNotAvailable();
     this.getOrders();
   }
 
-  openDialog(order: Order): void {
-    if (!order) {
-      order = new Order();
+  createOrderDialog(table: Table): void {
+    if (!table) {
+      table = new Table();
     }
-    const dialogRef = this.dialog.open(ModalOrderComponent, {
+    this.tableSelected = table;
+
+    const dialogRef = this.dialog.open(ModalCreateOrderComponent, {
       data: {
-        // "date": order.date || "",
-        // "discount": order.discount || "",
-        // "price": order.totalPrice,
-        // "TableId": order.table.id,
-        // "OrderItems": order.itemsList
+        "description": table.description || "",
+        "id": table.id || "",
       }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result.id)
-        this.editOrders(result);
-      else
-        this.addOrders(result);
+      //TODO: set available table that has just closed order.
+      console.log(JSON.stringify(result));
+      if (!this.order){
+        this.order = new Order();
+        this.order.OrderItem = [];
+      }
+      
+      let orderItem = new OrderItem();
+      this.order.totalPrice = result.map(p => p.price).reduce((a, b) => a + b, 0).toFixed(2);
+      result.map(p => p.id).forEach(element => {        
+        orderItem.itemId = element;
+        this.order.OrderItem.push(orderItem);  
+      });
+      this.order.date = new Date();
+      this.order.discount = 0;
+      this.order.tableId = this.tableSelected.id;
+      this.addOrders(this.order);
     })
   }
 
 
+  closeOrderDialog(order: Order): void {
+    if (!order) {
+      order = new Order();
+    }
+
+    const dialogRef = this.dialog.open(ModalOrderComponent, {
+      data: {
+        "table": order.table || "",
+        "totalPrice": order.totalPrice || "",
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      //TODO: set available table that has just closed order.
+      console.log(result);
+    })
+  }
+
+
+  openCreateOrderTable(table: Table): void {
+    this.createOrderDialog(table);
+  }
+
   openOrderTable(table: Table): void {
     this._service.getOrdersByTable(table).subscribe(res => {
-      this.openDialog(res);      
+      this.closeOrderDialog(res);
     });
   }
 
@@ -62,7 +101,7 @@ export class OrdersComponent implements OnInit {
   }
 
 
-  getTablesAvailable(): void {
+  getTablesNotAvailable(): void {
     this._tbService.getTables().subscribe(res => this.orderTables = res.filter((tb) => { return tb.status == false }));
   }
 
@@ -77,6 +116,4 @@ export class OrdersComponent implements OnInit {
   editOrders(order: Order): void {
     this._service.updateOrder(order).subscribe(res => { this.getOrders() });
   }
-
-
 }

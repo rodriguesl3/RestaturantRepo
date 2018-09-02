@@ -25,8 +25,14 @@ namespace Cedris.Restaurant.API.Controllers
         [HttpGet]
         public ActionResult<Order> Get(Guid tableId)
         {
-            var order = _context.Order.OrderByDescending(x => x.Date).LastOrDefault(x => x.TableId == tableId);
-            
+            var order = _context.Order.OrderByDescending(x => x.Date)?.LastOrDefault(x => x.TableId == tableId) ?? null;
+            if (order == null)
+                return BadRequest("Não existe ordem para essa mesa");
+
+            order.Table = _context.Tables.FirstOrDefault(x => x.Id == tableId);
+
+            //removendo referencia ciclica.
+            order.Table.OrdersList = null;
             return order;
         }
 

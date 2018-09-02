@@ -3,9 +3,8 @@
 </div>
 <div class="row">
   <div class="container">
-    <mat-card (click)="openDialog(table)" class="tableDiv" 
-    *ngFor='let table of tableList; trackBy index' 
-    [ngStyle]="{'background-color': table.status ? 'green':'red'}">
+    <mat-card (click)="openDialog(table)" class="tableDiv" *ngFor='let table of tableList; trackBy index' [ngStyle]="{'background-color': table.status ? 'green':'#bd0000'}"
+      style="color:white">
       <h4>{{table.description}}</h4>
     </mat-card>
   </div>

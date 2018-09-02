@@ -1,13 +1,40 @@
 .root-container{
     width: 100%;
     height: 100vh;
+    
 }
+
+.mat-button {
+    font-size: 20px;
+}
+
+
+.mat-list-item {
+    margin-top: 50px;
+}
+
+.mat-toolbar{
+    background: black;
+    color: white;
+    font-size: 40px;
+}
+
+.mat-toolbar span{
+    width: 35%;
+    justify-content: center;
+    font-family: Segoe Script;
+}
+
+
 
 .side-container{
     width: 15%;
+   
 }
 
 .side-content{
     padding:20px;
-    font-size: 25px;
+    font-size: 35px;
 }
+
+

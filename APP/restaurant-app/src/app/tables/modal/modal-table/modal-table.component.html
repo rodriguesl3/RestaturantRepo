@@ -1,11 +1,11 @@
 <form [formGroup]="fgTable">
   <mat-form-field>
-    <input matInput formControlName="description" placeholder="descrição">
+    <input matInput formControlName="description" placeholder="Descrição">
   </mat-form-field>
 
   <mat-form-field>
     <!-- <textarea matInput placeholder="Textarea"></textarea> -->
-    <input matInput formControlName="numberAlias" placeholder="Numero da mesa">
+    <input matInput formControlName="numberAlias" placeholder="Número da mesa">
   </mat-form-field>
 
   <mat-form-field>
@@ -14,7 +14,7 @@
       <mat-option value="false">Ocupado</mat-option>
     </mat-select>
   </mat-form-field>
-  <button mat-button color="accent" (click)="onSendClick(fgTable)">Enviar</button>
-  <button mat-button color="accent" (click)="onNoClick()">Cancelar</button>
+  <button mat-button color="primary" (click)="onSendClick(fgTable)">Enviar</button>
+  <button mat-button color="wanr" (click)="onNoClick()">Cancelar</button>
 
 </form>

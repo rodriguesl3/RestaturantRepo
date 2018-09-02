@@ -3,21 +3,19 @@
     <div class="side-content">
       <mat-list>
         <mat-list-item>
-          <a [routerLink]="['/']" mat-button color="warn">
-            Inicio
-          </a>
-        </mat-list-item>
-        <mat-list-item>
+          <i class="fas fa-utensils fa-3x"></i>
           <a [routerLink]="['/tables']" mat-button color="warn">
             Mesas
           </a>
         </mat-list-item>
         <mat-list-item>
+            <i class="far fa-edit fa-3x"></i>
           <a [routerLink]="['/orders']" mat-button color="warn">
             Pedidos
           </a>
         </mat-list-item>
         <mat-list-item>
+            <i class="fas fa-list-ol fa-3x"></i>
           <a [routerLink]="['/items']" mat-button color="warn">
             Itens
           </a>
@@ -26,10 +24,11 @@
     </div>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <button mat-button color="warn" (click)="sidenav.toggle()"><i class="fas fa-bars fa-3x"></i></button>
+    <mat-toolbar>
+      <button mat-button (click)="sidenav.toggle()" class="menu-button">
+        <i class="fas fa-bars fa-3x"></i></button>
       <span class="example-fill-remaining-space"></span>
-      <!-- <span>Cedris Restaurant SA.</span> -->
+      <span>Cedris Restaurant SA.</span>
     </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
